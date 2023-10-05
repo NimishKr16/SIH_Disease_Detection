@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Speech to Text with Mic Option</title>
+</head>
+<body>
+<h1>Speech to Text with Mic Option</h1>
+
+<input type="text" id="query" placeholder="Enter a search query or speak into the mic">
+<button type="button" id="mic">Mic</button>
+
+<div id="results"></div>
+
+<script>
+// Create a new SpeechRecognition object
+var recognition = new SpeechRecognition();
+
+// Set the language for the speech recognizer
+recognition.lang = 'en-US';
+
+// Add an event listener for the speech recognition start event
+recognition.onstart = function() {
+ // Start recording audio
+ recognition.start();
+};
+
+// Add an event listener for the speech recognition result event
+recognition.onresult = function(event) {
+ // Get the final transcript of the speech recognition
+ var finalTranscript = event.results[0][0].transcript;
+
+ // Set the search query to the final transcript
+ document.getElementById('query').value = finalTranscript;
+};
+
+// Add an event listener for the speech recognition error event
+recognition.onerror = function(event) {
+ // Display an error message
+ console.log(event.error);
+};
+
+// Start the speech recognition on the mic button click
+document.getElementById('mic').addEventListener('click', function() {
+ recognition.start();
+});
+</script>
+</body>
+</html>
