@@ -5,3 +5,6 @@ Testing.csv = Testing Dataset
 Training.csv = Training Dataset
 
 Disease_Prediction = master .py file (executable)
+
+Disease_Model= Model file which can be used as a model:
+                can be imported & deployed
